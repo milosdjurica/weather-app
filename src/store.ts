@@ -4,8 +4,8 @@ import { ResponseData } from "./types";
 type State = {
   city: string;
   response: ResponseData | undefined;
-  daySelected: number;
-  hourSelected: number;
+  daySelected: "today" | "tomorrow" | "dayAfter";
+  hourSelected: string;
 };
 
 type Action = {
@@ -20,9 +20,9 @@ export const useMyStore = create<State & Action>((set) => ({
   updateCity: (city) => set(() => ({ city: city })),
   response: undefined,
   updateResponse: (response) => set(() => ({ response: response })),
-  daySelected: 0,
+  daySelected: "today",
   updateDaySelected: (daySelected) => set(() => ({ daySelected: daySelected })),
-  hourSelected: 0,
+  hourSelected: "00:00",
   updateHourSelected: (hourSelected) =>
     set(() => ({ hourSelected: hourSelected })),
 }));

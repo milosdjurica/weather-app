@@ -5,9 +5,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useMyStore } from "@/store";
-import getForecast from "@/utils/getForecast";
 import { ResponseData } from "@/types";
-import Error from "next/error";
 
 export default function Header({ res }: { res: ResponseData | undefined }) {
   const [updateResponse] = useMyStore((state) => [state.updateResponse]);
