@@ -8,17 +8,22 @@ import { useMyStore } from "@/store";
 import getForecast from "@/utils/getForecast";
 
 export default function Header() {
-  const [updateResponse] = useMyStore((state) => [state.updateResponse]);
+  const [city, updateResponse] = useMyStore((state) => [
+    state.city,
+    state.updateResponse,
+  ]);
 
-  // Fetch the forecast when the component mounts
+  // ! check if array should change
   useEffect(() => {
-    getForecast("Medellin").then((data) => {
+    getForecast(city).then((data) => {
       updateResponse(data);
     });
   }, []);
 
   return (
     <div className="flex px-6 border border-yellow-100 py-3 justify-between items-center">
+      {/* // TODO For search maybe use COMMAND component from ShadCN */}
+      {/* // TODO ADD option to change from Celsius to Fs */}
       <Link href="/">
         <Home />
       </Link>
