@@ -1,3 +1,4 @@
+import { CurrentCard } from "@/components/CurrentCard";
 import getForecast from "@/utils";
 
 export default async function Home() {
@@ -6,20 +7,10 @@ export default async function Home() {
   if (!res) return <>Something went wrong</>;
 
   return (
-    <div>
+    <div className="flex flex-col items-center pt-10">
       {/* // TODO For search maybe use COMMAND component from ShadCN */}
-      <div className="flex flex-col">
-        <h1 className="text-6xl text-center font-bold">{res.location.name}</h1>
-        <h2>
-          {res.location.region}, {res.location.country}
-        </h2>
-        <p>{res.location.lat}</p>
-        <p>{res.location.lon}</p>
-        <p>{res.location.localtime}</p>
-        {/* // ! see what you can do with this localtime epoch */}
-        <p>{res.location.localtime_epoch}</p>
-        <p>{res.location.tz_id}</p>
-      </div>
+      {/* // TODO ADD option to change from Celsius to Fs */}
+      <CurrentCard res={res} />
 
       <div>
         {/* // TODO CARD to put Name, country, time, maybe something else */}
