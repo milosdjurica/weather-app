@@ -5,6 +5,14 @@ import { ResponseData } from "@/types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useRef, useState } from "react";
 import HourCard from "./HourCard";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+import { Button } from "./ui/button";
 
 export default function Hours({ res }: { res: ResponseData }) {
   const daySelected = useMyStore((state) => state.daySelected);
@@ -29,23 +37,26 @@ export default function Hours({ res }: { res: ResponseData }) {
   }
 
   return (
-    <div className="w-[90%] md:w-1/2 border border-white">
-      <h2>Hourly forecast</h2>
-
-      <div className="relative group ">
-        <ArrowLeft onClick={() => handleClick("left")} />
-        <div
-          ref={rowRef}
-          className="flex space-x-2 p-2 md:p-4 rounded-lg
+    <Card className=" w-[90%] md:w-2/3 lg:w-2/3">
+      <CardHeader>
+        <CardTitle className="text-2xl">Hourly forecast</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="relative group">
+          <ArrowLeft onClick={() => handleClick("left")} />
+          <div
+            ref={rowRef}
+            className="flex space-x-2 p-2 md:p-4 rounded-lg
           border-2 border-blue-900 overflow-x-scroll scrollbar-hide"
-        >
-          {hoursArray.map((hour, index) => {
-            // TODO add UUID for keys
-            return <HourCard key={hour.chance_of_rain} hour={hour} />;
-          })}
+          >
+            {hoursArray.map((hour, index) => {
+              // TODO add UUID for keys
+              return <HourCard key={hour.chance_of_rain} hour={hour} />;
+            })}
+          </div>
+          <ArrowRight onClick={() => handleClick("right")} />
         </div>
-        <ArrowRight onClick={() => handleClick("right")} />
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }

@@ -1,11 +1,29 @@
 import { Hour } from "@/types";
+import Image from "next/image";
 import React from "react";
 
 export default function HourCard({ hour }: { hour: Hour }) {
   return (
-    <div className="min-w-[200px] h-[200px]">
-      <h3>{hour.time.split(" ")[1]}</h3>
-      <h3>{hour.temp_c} C</h3>
+    <div
+      className="border border-white 
+    flex  items-center flex-col
+    "
+    >
+      <div
+        className="p-4 min-w-[120px] space-y-4 flex-1
+    flex justify-between items-center flex-col
+    border-b border-white"
+      >
+        <Image
+          src={`https:${hour.condition.icon}`}
+          alt=""
+          width={40}
+          height={40}
+        />
+        <h3 className="font-bold ">{hour.temp_c} C</h3>
+        <p className="flex-1">{hour.condition.text}</p>
+      </div>
+      <h4 className="">{hour.time.split(" ")[1]}</h4>
     </div>
   );
 }
