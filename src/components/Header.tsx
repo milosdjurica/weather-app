@@ -6,18 +6,14 @@ import React, { useEffect } from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useMyStore } from "@/store";
 import getForecast from "@/utils/getForecast";
+import { ResponseData } from "@/types";
+import Error from "next/error";
 
-export default function Header() {
-  const [city, updateResponse] = useMyStore((state) => [
-    state.city,
-    state.updateResponse,
-  ]);
+export default function Header({ res }: { res: ResponseData | undefined }) {
+  const [updateResponse] = useMyStore((state) => [state.updateResponse]);
 
-  // ! check if array should change
   useEffect(() => {
-    getForecast(city).then((data) => {
-      updateResponse(data);
-    });
+    updateResponse(res);
   }, []);
 
   return (

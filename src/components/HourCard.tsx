@@ -5,14 +5,14 @@ import React from "react";
 export default function HourCard({ hour }: { hour: Hour }) {
   return (
     <div
-      className="border border-white 
+      className="shadow-md shadow-primary rounded-md 
     flex  items-center flex-col
     "
     >
       <div
         className="p-4 min-w-[120px] space-y-4 flex-1
     flex justify-between items-center flex-col
-    border-b border-white"
+    border-b border-primary"
       >
         <Image
           src={`https:${hour.condition.icon}`}
@@ -23,7 +23,7 @@ export default function HourCard({ hour }: { hour: Hour }) {
         <h3 className="font-bold ">{hour.temp_c} C</h3>
         <p className="flex-1">{hour.condition.text}</p>
       </div>
-      <h4 className="">{hour.time.split(" ")[1]}</h4>
+      <h4 className="py-1">{hour.time.split(" ")[1]}</h4>
     </div>
   );
 }

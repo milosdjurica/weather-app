@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import Header from "@/components/Header";
+import getForecast from "@/utils/getForecast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +12,13 @@ export const metadata: Metadata = {
   description: "Weather app created with Nextjs",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const res = await getForecast("Medellin");
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
@@ -25,7 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          {<Header res={res} />}
           {children}
         </ThemeProvider>
       </body>
