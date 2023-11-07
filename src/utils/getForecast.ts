@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ResponseData } from "./types";
+import { ResponseData } from "../types";
 
 export default async function getForecast(query: string) {
   const options = {
@@ -14,6 +14,7 @@ export default async function getForecast(query: string) {
       "X-RapidAPI-Host": process.env.NEXT_PUBLIC_API_HOST,
     },
   };
+
   try {
     const response = await axios.request(options);
     const data: ResponseData = response.data;

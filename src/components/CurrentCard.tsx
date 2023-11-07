@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import {
   Card,
   CardContent,
@@ -5,11 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ResponseData } from "@/types";
 import { Button } from "./ui/button";
-import Image from "next/image";
 
-export async function CurrentCard({ res }: { res: ResponseData }) {
+import getAmPmTime from "@/utils/getAmPmTime";
+import { ResponseData } from "@/types";
+
+export function CurrentCard({ res }: { res: ResponseData }) {
   return (
     <Card className="w-[350px]">
       <CardHeader>
@@ -17,9 +20,7 @@ export async function CurrentCard({ res }: { res: ResponseData }) {
         <div className="text-xl text-muted-foreground">
           <h4>
             {res.location.localtime.split(" ")[1]}{" "}
-            {Number(res.location.localtime.split(" ")[1].split(":")[0]) >= 12
-              ? "PM"
-              : "AM"}
+            {getAmPmTime(res.location.localtime)}
           </h4>
           <h4>
             {res.location.region}, {res.location.country}
