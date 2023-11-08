@@ -18,7 +18,6 @@ export default async function getForecast(query: string) {
   try {
     const response = await axios.request(options);
     const data: ResponseData = response.data;
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);

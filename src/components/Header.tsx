@@ -1,27 +1,54 @@
 "use client";
 
-import { Home, Search } from "lucide-react";
-import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useMyStore } from "@/store";
-import { ResponseData } from "@/types";
+import getForecast from "@/utils/getForecast";
 
-export default function Header({ res }: { res: ResponseData | undefined }) {
-  const [updateResponse] = useMyStore((state) => [state.updateResponse]);
+export default function Header() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentCity, setCurrentCity] = useState("Novi Sad");
+
+  const [response, updateResponse] = useMyStore((state) => [
+    state.response,
+    state.updateResponse,
+  ]);
 
   useEffect(() => {
-    updateResponse(res);
+    makeRequest();
   }, []);
 
+  function makeRequest() {
+    setIsLoading(true);
+    getForecast(currentCity).then((data) => {
+      updateResponse(data);
+      setIsLoading(false);
+    });
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  // TODO Add location search from same api. When user types the name of the city
+  // TODO Then after 1 sec show results that he can pick from
   return (
-    <div className="flex px-6 border border-yellow-100 py-3 justify-between items-center">
-      {/* // TODO For search maybe use COMMAND component from ShadCN */}
-      {/* // TODO ADD option to change from Celsius to Fs */}
-      <Link href="/">
-        <Home />
-      </Link>
-      <Search />
+    <div className="flex items-center justify-between px-6 py-3 shadow-sm shadow-primary">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          makeRequest();
+        }}
+      >
+        <input
+          type="text"
+          placeholder={currentCity}
+          className="w-[150px] rounded-xl border border-primary 
+      bg-muted px-3 py-1
+      text-center sm:w-[200px]"
+          onChange={(e) => setCurrentCity(e.target.value)}
+        />
+      </form>
       <ThemeSwitcher />
     </div>
   );
