@@ -17,8 +17,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const res = await getForecast("Medellin");
-
+  const res = await getForecast("Novi Sad");
+  console.log(res);
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
@@ -28,7 +28,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {<Header res={res} />}
+          {res && <Header res={res} />}
           {children}
         </ThemeProvider>
       </body>

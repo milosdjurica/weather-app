@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useMyStore } from "@/store";
 import getForecast from "@/utils/getForecast";
+import { ResponseData } from "@/types";
 
-export default function Header() {
-  const [isLoading, setIsLoading] = useState(true);
+export default function Header({ res }: { res: ResponseData }) {
   const [currentCity, setCurrentCity] = useState("Novi Sad");
 
   const [response, updateResponse] = useMyStore((state) => [
@@ -14,20 +14,14 @@ export default function Header() {
     state.updateResponse,
   ]);
 
-  useEffect(() => {
-    makeRequest();
-  }, []);
-
-  function makeRequest() {
-    setIsLoading(true);
-    getForecast(currentCity).then((data) => {
-      updateResponse(data);
-      setIsLoading(false);
-    });
+  if (!response) {
+    updateResponse(res);
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  function makeRequest() {
+    getForecast(currentCity).then((data) => {
+      updateResponse(data);
+    });
   }
 
   // TODO Add location search from same api. When user types the name of the city

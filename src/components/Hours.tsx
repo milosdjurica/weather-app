@@ -1,6 +1,6 @@
 "use client";
 
-import { Hour, ResponseData } from "@/types";
+import { Hour } from "@/types";
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import React, { useRef, useState } from "react";
 import HourCard from "./HourCard";
@@ -46,7 +46,7 @@ export default function Hours({ hours }: { hours: Hour[] }) {
           >
             {hours.map((hour, index) => {
               // TODO add UUID for keys
-              return <HourCard key={hour.chance_of_rain} hour={hour} />;
+              return <HourCard key={hour.time_epoch} hour={hour} />;
             })}
           </div>
           <ArrowRightCircle
