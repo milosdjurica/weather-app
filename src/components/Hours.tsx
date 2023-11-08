@@ -13,10 +13,14 @@ import {
   CardTitle,
 } from "./ui/card";
 
-export default function Hours({ res }: { res: ResponseData }) {
-  const daySelected = useMyStore((state) => state.daySelected);
-
-  const hoursArray = res.forecast.forecastday[daySelected].hour;
+export default function Hours({
+  res,
+  day,
+}: {
+  res: ResponseData;
+  day: number;
+}) {
+  const hoursArray = res.forecast.forecastday[day].hour;
 
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
@@ -42,18 +46,18 @@ export default function Hours({ res }: { res: ResponseData }) {
         <CardTitle className="text-2xl">Hourly forecast</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="relative group">
+        <div className="group relative">
           <ArrowLeftCircle
             onClick={() => handleClick("left")}
-            className={`absolute top-0 bottom-0 left-0 z-40 
-            bg-muted text-primary rounded-full m-auto h-8 w-8 
-            cursor-pointer opacity-0 transition 
+            className={`absolute bottom-0 left-0 top-0 z-40 
+            m-auto h-8 w-8 cursor-pointer rounded-full bg-muted 
+            text-primary opacity-0 transition 
             hover:scale-110 group-hover:opacity-100 ${!isMoved && "hidden"}`}
           />
           <div
             ref={rowRef}
-            className="flex space-x-2 p-2 md:p-4 rounded-lg
-            border-2 border-primary overflow-x-scroll scrollbar-hide"
+            className="flex space-x-2 overflow-x-scroll rounded-lg border-2
+            border-primary p-2 scrollbar-hide md:p-4"
           >
             {hoursArray.map((hour, index) => {
               // TODO add UUID for keys
@@ -62,9 +66,9 @@ export default function Hours({ res }: { res: ResponseData }) {
           </div>
           <ArrowRightCircle
             onClick={() => handleClick("right")}
-            className={`absolute top-0 bottom-0 right-0 z-40 
-            bg-muted text-primary rounded-full m-auto h-8 w-8 
-            cursor-pointer opacity-0 transition 
+            className={`absolute bottom-0 right-0 top-0 z-40 
+            m-auto h-8 w-8 cursor-pointer rounded-full bg-muted 
+            text-primary opacity-0 transition 
             hover:scale-110 group-hover:opacity-100`}
           />
         </div>

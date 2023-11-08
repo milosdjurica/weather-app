@@ -10,11 +10,11 @@ import Hours from "./Hours";
 export function CurrentCard({ res }: { res: ResponseData }) {
   return (
     <Card
-      className="max-w-full p-4 flex 
-      items-center justify-between flex-col 
-      md:flex-row md:space-x-2 space-y-10 md:space-y-0"
+      className="flex max-w-full flex-col 
+      items-center justify-between space-y-10 
+      p-4 md:flex-row md:space-x-2 md:space-y-0"
     >
-      <div className="flex flex-col  md:w-1/2 space-y-4 justify-between">
+      <div className="flex flex-col  justify-between space-y-4 md:w-1/2">
         <h2 className="text-5xl font-bold">{res.location.name}</h2>
         <div className="text-xl text-muted-foreground">
           <h4>
@@ -27,7 +27,7 @@ export function CurrentCard({ res }: { res: ResponseData }) {
         </div>
         <div>
           <h2 className="text-7xl font-semibold">{res.current.temp_c}°C</h2>
-          <div className="text-2xl flex items-center space-x-5">
+          <div className="flex items-center space-x-5 text-2xl">
             <p>{res.current.condition.text}</p>
             <Image
               src={`https:${res.current.condition.icon}`}
@@ -38,7 +38,7 @@ export function CurrentCard({ res }: { res: ResponseData }) {
           </div>
         </div>
         <Button
-          className="w-[200px] text-md"
+          className="text-md w-[200px]"
           onClick={() => {
             /* // TODO open today forecast (open dropdown)  */
           }}
@@ -46,7 +46,7 @@ export function CurrentCard({ res }: { res: ResponseData }) {
           See today&#39;s forecast
         </Button>
       </div>
-      <Hours res={res} />
+      <Hours day={0} res={res} />
     </Card>
   );
 }

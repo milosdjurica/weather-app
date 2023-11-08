@@ -15,7 +15,7 @@ export default function Home() {
   if (!response) return <>Loading....</>;
 
   return (
-    <div className="flex flex-col items-center pt-10">
+    <div className="flex w-full flex-col items-center pt-10">
       <div
         className="flex w-[90%] flex-col items-center justify-between 
       space-y-10 md:w-4/5 md:flex-row md:space-x-10 md:space-y-0"
