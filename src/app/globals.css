@@ -49,6 +49,12 @@
   }
 }
 
+@layer components {
+  .gridStyle div {
+    @apply flex flex-wrap justify-between rounded-md p-2 shadow-sm shadow-primary;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

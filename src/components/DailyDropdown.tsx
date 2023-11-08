@@ -19,7 +19,7 @@ export default function DailyDropdown({ res }: { res: ResponseData }) {
           key={day.date_epoch}
           type="single"
           collapsible
-          className="rounded-md border-2 border-primary  px-5"
+          className="rounded-md border-2 border-primary px-5"
         >
           <AccordionItem value="item-1">
             <AccordionTrigger className="grid w-full grid-cols-5 gap-10">
