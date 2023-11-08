@@ -18,7 +18,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const res = await getForecast("Novi Sad");
-  console.log(res);
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>

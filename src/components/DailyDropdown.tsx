@@ -24,7 +24,11 @@ export default function DailyDropdowns({ res }: { res: ResponseData }) {
           <AccordionItem value="item-1">
             <AccordionTrigger className="grid w-full grid-cols-5 gap-10">
               <h3 className="text-center font-semibold md:text-lg">
-                {index === 0 ? "Today" : index === 1 ? "Tomorrow" : "Day after"}
+                {day.date
+                  .split("-")
+                  .reverse()
+                  .filter((el) => el.length < 3)
+                  .join("/")}
               </h3>
 
               <Image
