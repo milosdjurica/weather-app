@@ -17,8 +17,8 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center pt-10">
       <div
-        className="space-y-10 md:space-y-0 md:space-x-10 flex flex-col 
-      md:flex-row md:w-4/5 w-[90%] items-center justify-between"
+        className="flex w-[90%] flex-col items-center justify-between 
+      space-y-10 md:w-4/5 md:flex-row md:space-x-10 md:space-y-0"
       >
         <CurrentCard res={response} />
       </div>
