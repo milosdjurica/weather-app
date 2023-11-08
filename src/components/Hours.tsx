@@ -1,20 +1,12 @@
 "use client";
 
-import { ResponseData } from "@/types";
+import { Hour, ResponseData } from "@/types";
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import React, { useRef, useState } from "react";
 import HourCard from "./HourCard";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
-export default function Hours({
-  res,
-  day,
-}: {
-  res: ResponseData;
-  day: number;
-}) {
-  const hoursArray = res.forecast.forecastday[day].hour;
-
+export default function Hours({ hours }: { hours: Hour[] }) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -52,7 +44,7 @@ export default function Hours({
             className="flex space-x-2 overflow-x-scroll rounded-lg border-2
             border-primary p-2 scrollbar-hide md:p-4"
           >
-            {hoursArray.map((hour, index) => {
+            {hours.map((hour, index) => {
               // TODO add UUID for keys
               return <HourCard key={hour.chance_of_rain} hour={hour} />;
             })}

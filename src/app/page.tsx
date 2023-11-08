@@ -1,15 +1,10 @@
 "use client";
 
 import { CurrentCard } from "@/components/CurrentCard";
-import DailyDropdown from "@/components/DailyDropdown";
-import Hours from "@/components/Hours";
+import DailyDropdowns from "@/components/DailyDropdown";
 import { useMyStore } from "@/store";
 
 export default function Home() {
-  // ! Instead of this, try to use async and then pass to the components below,
-  // ! and when user clicks on link to daily for example, then create client component for button to click
-  // ! and put in state there ???
-
   const [response] = useMyStore((state) => [state.response]);
 
   if (!response) return <>Loading....</>;
@@ -22,10 +17,7 @@ export default function Home() {
       >
         <CurrentCard res={response} />
       </div>
-      {/* // TODO  maybe add calendar component to pick date */}
-      {/* // TODO pull this hour forecast and next 4 hours */}
-      {/* // TODO maybe graficon for all hours or next 3 days */}
-      <DailyDropdown res={response} />
+      <DailyDropdowns res={response} />
     </div>
   );
 }

@@ -11,7 +11,7 @@ import Image from "next/image";
 import Hours from "./Hours";
 import DailyCard from "./DailyCard";
 
-export default function DailyDropdown({ res }: { res: ResponseData }) {
+export default function DailyDropdowns({ res }: { res: ResponseData }) {
   return (
     <div className="mt-10 w-[90%] space-y-2 md:w-[80%]">
       {res.forecast.forecastday.map((day, index) => (
@@ -43,13 +43,12 @@ export default function DailyDropdown({ res }: { res: ResponseData }) {
                 lg:flex-row lg:space-x-5 lg:space-y-0"
               >
                 <DailyCard forecastDay={res.forecast.forecastday[index]} />
-                <Hours day={index} res={res} />
+                <Hours hours={res.forecast.forecastday[index].hour} />
               </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       ))}
-      <h1>{res.forecast.forecastday[0].day.condition.text}</h1>
     </div>
   );
 }

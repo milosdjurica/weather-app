@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { Card } from "@/components/ui/card";
-import { Button } from "./ui/button";
 
 import getAmPmTime from "@/utils/getAmPmTime";
 import { ResponseData } from "@/types";
@@ -10,8 +9,8 @@ import Hours from "./Hours";
 export function CurrentCard({ res }: { res: ResponseData }) {
   return (
     <Card
-      className="flex max-w-full flex-col 
-      items-center justify-between space-y-10 
+      className="flex max-w-full flex-col items-center justify-between
+      space-y-10 border-2 border-primary 
       p-4 lg:flex-row lg:space-x-2 lg:space-y-0"
     >
       <div className="flex flex-col justify-between space-y-4 lg:w-1/2">
@@ -37,11 +36,8 @@ export function CurrentCard({ res }: { res: ResponseData }) {
             />
           </div>
         </div>
-        {/* <Button className="text-md w-[200px]" onClick={() => {}}>
-          See today&#39;s forecast
-        </Button> */}
       </div>
-      <Hours day={0} res={res} />
+      <Hours hours={res.forecast.forecastday[0].hour} />
     </Card>
   );
 }

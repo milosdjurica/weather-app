@@ -1,20 +1,11 @@
-import { useMyStore } from "@/store";
 import { Hour } from "@/types";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 export default function HourCard({ hour }: { hour: Hour }) {
-  const [daySelected, setHourSelected] = useMyStore((state) => [
-    state.daySelected,
-    state.updateHourSelected,
-  ]);
-
   return (
-    <Link
-      // ! FIX THIS
-      // onClick={() => setHourSelected(hour.time.split(" ")[1])}
-      href={`/${daySelected}/${hour.time.split(" ")[1]}`}
+    <button
+      onClick={() => {}}
       className="flex flex-col items-center 
       rounded-md text-center shadow-md shadow-primary
       "
@@ -34,6 +25,6 @@ export default function HourCard({ hour }: { hour: Hour }) {
         <p className="flex-1">{hour.condition.text}</p>
       </div>
       <h4 className="py-1">{hour.time.split(" ")[1]}</h4>
-    </Link>
+    </button>
   );
 }
