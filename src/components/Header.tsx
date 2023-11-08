@@ -32,6 +32,7 @@ export default function Header() {
 
   // TODO Add location search from same api. When user types the name of the city
   // TODO Then after 1 sec show results that he can pick from
+  // TODO maybe use command component from shadCN
   return (
     <div className="flex items-center justify-between px-6 py-3 shadow-sm shadow-primary">
       <form
