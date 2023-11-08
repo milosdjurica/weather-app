@@ -12,9 +12,9 @@ export function CurrentCard({ res }: { res: ResponseData }) {
     <Card
       className="flex max-w-full flex-col 
       items-center justify-between space-y-10 
-      p-4 md:flex-row md:space-x-2 md:space-y-0"
+      p-4 lg:flex-row lg:space-x-2 lg:space-y-0"
     >
-      <div className="flex flex-col  justify-between space-y-4 md:w-1/2">
+      <div className="flex flex-col justify-between space-y-4 lg:w-1/2">
         <h2 className="text-5xl font-bold">{res.location.name}</h2>
         <div className="text-xl text-muted-foreground">
           <h4>
@@ -31,20 +31,15 @@ export function CurrentCard({ res }: { res: ResponseData }) {
             <p>{res.current.condition.text}</p>
             <Image
               src={`https:${res.current.condition.icon}`}
-              alt=""
+              alt={res.current.condition.text}
               width={40}
               height={40}
             />
           </div>
         </div>
-        <Button
-          className="text-md w-[200px]"
-          onClick={() => {
-            /* // TODO open today forecast (open dropdown)  */
-          }}
-        >
+        {/* <Button className="text-md w-[200px]" onClick={() => {}}>
           See today&#39;s forecast
-        </Button>
+        </Button> */}
       </div>
       <Hours day={0} res={res} />
     </Card>

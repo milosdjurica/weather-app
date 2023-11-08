@@ -1,17 +1,10 @@
 "use client";
 
-import { useMyStore } from "@/store";
 import { ResponseData } from "@/types";
-import { ArrowLeft, ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
+import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import React, { useRef, useState } from "react";
 import HourCard from "./HourCard";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 export default function Hours({
   res,
@@ -41,7 +34,7 @@ export default function Hours({
 
   return (
     // TODO Change to scrollbar instead of arrows and paint it in primary color?
-    <Card className=" w-[90%] md:w-2/3 lg:w-2/3">
+    <Card className="w-[90%] lg:w-2/3">
       <CardHeader>
         <CardTitle className="text-2xl">Hourly forecast</CardTitle>
       </CardHeader>

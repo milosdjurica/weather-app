@@ -1,15 +1,8 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Button } from "./ui/button";
-import { Day, ForecastDay } from "@/types";
+import { Card } from "./ui/card";
+
+import { ForecastDay } from "@/types";
 
 export default function DailyCard({
   forecastDay,
@@ -19,7 +12,7 @@ export default function DailyCard({
   const day = forecastDay.day;
 
   return (
-    <Tabs defaultValue="basic" className=" w-full max-w-[400px]">
+    <Tabs defaultValue="basic" className="w-[90%] font-semibold lg:w-1/3">
       <TabsList className="w-full">
         <TabsTrigger value="basic" className="w-1/2">
           Info

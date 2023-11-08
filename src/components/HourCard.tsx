@@ -12,16 +12,17 @@ export default function HourCard({ hour }: { hour: Hour }) {
 
   return (
     <Link
-      onClick={() => setHourSelected(hour.time.split(" ")[1])}
+      // ! FIX THIS
+      // onClick={() => setHourSelected(hour.time.split(" ")[1])}
       href={`/${daySelected}/${hour.time.split(" ")[1]}`}
-      className="shadow-md shadow-primary rounded-md 
-      flex items-center flex-col text-center
+      className="flex flex-col items-center 
+      rounded-md text-center shadow-md shadow-primary
       "
     >
       <div
-        className="p-4 min-w-[120px] space-y-4 flex-1
-      flex justify-between items-center flex-col
-      border-b border-primary"
+        className="flex min-w-[120px] flex-1 flex-col
+      items-center justify-between space-y-4 border-b
+      border-primary p-4"
       >
         <Image
           src={`https:${hour.condition.icon}`}
