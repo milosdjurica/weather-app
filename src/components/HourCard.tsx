@@ -16,7 +16,7 @@ export default function HourCard({ hour }: { hour: Hour }) {
     <Dialog>
       <DialogTrigger
         className="flex flex-col items-center 
-      rounded-md text-center shadow-md shadow-primary
+      rounded-md text-center shadow-md shadow-primary transition ease-in hover:scale-105
       "
       >
         <div

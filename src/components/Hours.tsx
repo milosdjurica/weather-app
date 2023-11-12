@@ -41,7 +41,7 @@ export default function Hours({ hours }: { hours: Hour[] }) {
           />
           <div
             ref={rowRef}
-            className="flex space-x-2 overflow-x-scroll rounded-lg border border-primary
+            className="flex space-x-3 overflow-x-scroll rounded-lg border border-primary
             p-2 scrollbar-hide md:p-4"
           >
             {hours.map((hour, index) => {
