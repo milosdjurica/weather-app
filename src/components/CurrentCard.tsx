@@ -11,7 +11,7 @@ export function CurrentCard({ res }: { res: ResponseData }) {
     <Card
       className="flex max-w-full flex-col items-center justify-between
       space-y-10 border-2 border-primary 
-      px-2 py-4 md:p-4 lg:flex-row lg:space-x-2 lg:space-y-0"
+      p-4 lg:flex-row lg:space-x-2 lg:space-y-0"
     >
       <div className="flex flex-col justify-between space-y-4 lg:w-1/2">
         <h2 className="text-5xl font-bold">{res.location.name}</h2>

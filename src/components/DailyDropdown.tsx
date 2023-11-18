@@ -44,7 +44,7 @@ export default function DailyDropdowns({ res }: { res: ResponseData }) {
               <div
                 className="mt-5 flex flex-col 
                 items-center justify-between space-y-10 
-                lg:flex-row lg:space-x-5 lg:space-y-0"
+                p-2 md:p-0 lg:flex-row lg:space-x-5 lg:space-y-0"
               >
                 <DailyCard forecastDay={res.forecast.forecastday[index]} />
                 <Hours hours={res.forecast.forecastday[index].hour} />

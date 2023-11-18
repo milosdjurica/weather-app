@@ -26,7 +26,7 @@ export default function Hours({ hours }: { hours: Hour[] }) {
 
   return (
     // TODO Change to scrollbar instead of arrows and paint it in primary color?
-    <Card className="w-[95%] lg:w-2/3">
+    <Card className="w-full md:w-[90%] lg:w-2/3">
       <CardHeader className="p-2 py-4 md:p-6">
         <CardTitle className="text-2xl">Hourly forecast</CardTitle>
       </CardHeader>

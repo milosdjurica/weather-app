@@ -14,7 +14,7 @@ export default function DailyCard({
   return (
     <Tabs
       defaultValue="basic"
-      className="w-[95%] font-semibold md:w-[90%] lg:w-1/3"
+      className="w-full font-semibold md:w-[90%] lg:w-1/3"
     >
       <TabsList className="w-full">
         <TabsTrigger value="basic" className="w-1/2">
