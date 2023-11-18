@@ -12,7 +12,10 @@ export default function DailyCard({
   const day = forecastDay.day;
 
   return (
-    <Tabs defaultValue="basic" className="w-[90%] font-semibold lg:w-1/3">
+    <Tabs
+      defaultValue="basic"
+      className="w-[95%] font-semibold md:w-[90%] lg:w-1/3"
+    >
       <TabsList className="w-full">
         <TabsTrigger value="basic" className="w-1/2">
           Info

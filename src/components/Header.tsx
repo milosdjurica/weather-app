@@ -8,6 +8,7 @@ import { ResponseData } from "@/types";
 
 export default function Header({ res }: { res: ResponseData }) {
   const [currentCity, setCurrentCity] = useState("Novi Sad");
+  const [isPlaceholderVisible, setPlaceholderVisible] = useState(true);
 
   const [response, updateResponse] = useMyStore((state) => [
     state.response,
@@ -24,6 +25,10 @@ export default function Header({ res }: { res: ResponseData }) {
     });
   }
 
+  const handleFocus = () => {
+    setPlaceholderVisible(false);
+  };
+
   // TODO Add location search from same api. When user types the name of the city
   // TODO Then after 1 sec show results that he can pick from
   // TODO maybe use command component from shadCN
@@ -37,11 +42,12 @@ export default function Header({ res }: { res: ResponseData }) {
       >
         <input
           type="text"
-          placeholder={currentCity}
+          placeholder={isPlaceholderVisible ? currentCity : ""}
           className="w-[150px] rounded-xl border border-primary 
       bg-muted px-3 py-1
       text-center sm:w-[200px]"
           onChange={(e) => setCurrentCity(e.target.value)}
+          onFocus={handleFocus}
         />
       </form>
       <ThemeSwitcher />
