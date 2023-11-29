@@ -5,8 +5,11 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useMyStore } from "@/store";
 import getForecast from "@/utils/getForecast";
 import { ResponseData } from "@/types";
+import { revalidatePath } from "next/cache";
 
 export default function Header({ res }: { res: ResponseData }) {
+  revalidatePath("/");
+
   const [currentCity, setCurrentCity] = useState("Novi Sad");
 
   const [response, updateResponse] = useMyStore((state) => [
