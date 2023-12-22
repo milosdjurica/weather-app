@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import Header from "@/components/Header";
-import getForecast from "@/utils/getForecast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +16,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const res = await getForecast("Novi Sad");
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
@@ -27,7 +25,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {res && <Header res={res} />}
+          <Header />
           {children}
         </ThemeProvider>
       </body>

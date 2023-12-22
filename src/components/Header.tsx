@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useMyStore } from "@/store";
 import getForecast from "@/utils/getForecast";
-import { ResponseData } from "@/types";
 // import { revalidatePath } from "next/cache";
 
-export default function Header({ res }: { res: ResponseData }) {
+export default function Header() {
   // revalidatePath("/");
 
   const [currentCity, setCurrentCity] = useState("Novi Sad");
@@ -17,9 +16,18 @@ export default function Header({ res }: { res: ResponseData }) {
     state.updateResponse,
   ]);
 
-  if (!response) {
-    updateResponse(res);
-  }
+  useEffect(() => {
+    const fetchForecast = async () => {
+      try {
+        const data = await getForecast("Novi Sad");
+        updateResponse(data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    fetchForecast();
+  }, []); // Empty dependency array to run only once on component mount
 
   function makeRequest() {
     getForecast(currentCity).then((data) => {
