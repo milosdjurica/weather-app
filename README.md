@@ -58,7 +58,8 @@
 
 This project fetches real-time data and presents a weather forecast overview, including current conditions, hourly and 3-day predictions for any city.
 Technologies used: React, Next.js, Weather API, Tailwind CSS, Shadcn, Zustand.
-Note: In order to get latest real-time user has to enter city name in the input field. On page loading it loads old data, because of how Next.js caching works. I will fix this problem soon.
+
+<!-- Note: In order to get latest real-time user has to enter city name in the input field. On page loading it loads old data, because of how Next.js caching works. I will fix this problem soon. -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
